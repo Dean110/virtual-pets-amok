@@ -1,12 +1,14 @@
 package virtual_pets_amok;
 
+import virtual_pets_amok.OrganicDogTest.DummyCage;
+
 public class OrganicDog {
 
 	private String name;
 	private String description;
 	private int hunger;
 	private int thirst;
-	private int waste;
+	private int waste = 10;
 	private int boredom;
 
 	public OrganicDog(String name, String description) {
@@ -58,6 +60,17 @@ public class OrganicDog {
 
 	public void play() {
 		boredom -= 40;
+	}
+
+	public void soil(DummyCage testCage) {
+		waste = 0;
+		testCage.soiledIn(1);
+	}
+
+	public void tick() {
+		hunger++;
+		thirst++;
+		boredom++;
 	}
 
 }

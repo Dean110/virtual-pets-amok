@@ -11,7 +11,7 @@ public class OrganicDogTest {
 
 	@Test
 	public void shouldHaveAName() {
-		OrganicDog underTest = new OrganicDog(ORGANIC_DOG_NAME, "");
+		OrganicDog underTest = new OrganicDog("Bruce", "");
 		String result = underTest.getName();
 		assertThat(result, is(ORGANIC_DOG_NAME));
 	}
@@ -64,4 +64,47 @@ public class OrganicDogTest {
 		int postPlayBoredom = underTest.getBoredom();
 		assertThat(prePlayBoredom - postPlayBoredom, is(40));
 	}
+
+	boolean wasSoiled = false;
+
+	public class DummyCage {
+		public void soiledIn(int amount) {
+			wasSoiled = true;
+		}
+	}
+
+	DummyCage testCage = new DummyCage();
+
+	@Test
+	public void soilShouldSoilCage() {
+
+		underTest.soil(testCage);
+
+		assertThat(wasSoiled, is(true));
+	}
+
+	@Test
+	public void soilShouldReduceWasteToZero() {
+		int preSoilWaste = underTest.getWaste();
+		underTest.soil(testCage);
+		int postSoilWaste = underTest.getWaste();
+		assertThat(preSoilWaste != 0, is(true));
+		assertThat(postSoilWaste, is(0));
+
+	}
+
+	@Test
+	public void tickSouldIncreaseHungerThirstBoredomBy1() {
+		int preTickHunger = underTest.getHunger();
+		int preTickThirst = underTest.getThirst();
+		int preTickBoredom = underTest.getBoredom();
+		underTest.tick();
+		int postTickHunger = underTest.getHunger();
+		int postTickThirst = underTest.getThirst();
+		int postTickBoredom = underTest.getBoredom();
+		assertThat(postTickHunger - preTickHunger, is(1));
+		assertThat(postTickThirst - preTickThirst, is(1));
+		assertThat(postTickBoredom - preTickBoredom, is(1));
+	}
+
 }
