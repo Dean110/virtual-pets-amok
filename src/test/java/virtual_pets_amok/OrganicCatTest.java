@@ -25,6 +25,20 @@ public class OrganicCatTest {
 	}
 
 	@Test
+	public void shouldBePutInShelterUponCreation() {
+		int result = testShelter.getSize();
+		assertThat(result, is(1));
+
+	}
+
+	@Test
+	public void shouldHaveTwoCatsInTheShelter() {
+		OrganicCat underTest2 = new OrganicCat("A", "Cat", testShelter);
+		int result = testShelter.getSize();
+		assertThat(result, is(2));
+	}
+
+	@Test
 	public void soilShouldReduceWasteToZero() {
 		int preSoilWaste = underTest.getWaste();
 		underTest.soil(testShelter);

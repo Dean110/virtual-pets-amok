@@ -5,6 +5,7 @@ public class OrganicCat extends Organic {
 	public OrganicCat(String name, String description, Shelter shelter) {
 		this.name = name;
 		this.description = description;
+		shelter.addPet(this);
 	}
 
 	public void soil(Shelter shelter) {
