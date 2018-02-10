@@ -2,6 +2,7 @@ package virtual_pets_amok;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class OrganicDogTest {
 
 	@Test
 	public void shouldHaveAName() {
-		OrganicDog underTest = new OrganicDog("Bruce", "");
+		VirtualPet underTest = new OrganicDog("Bruce", "");
 		String result = underTest.getName();
 		assertThat(result, is(ORGANIC_DOG_NAME));
 	}
@@ -65,28 +66,27 @@ public class OrganicDogTest {
 		assertThat(prePlayBoredom - postPlayBoredom, is(40));
 	}
 
-	boolean wasSoiled = false;
+	@Test
+	public void playShouldIncreaseHapinessBy30() {
+		int prePlayBoredom = underTest.getHappiness();
+		underTest.play();
+		int postPlayBoredom = underTest.getHappiness();
+		assertThat(postPlayBoredom - prePlayBoredom, is(30));
 
-	public class DummyCage {
-		public void soiledIn(int amount) {
-			wasSoiled = true;
-		}
 	}
-
-	DummyCage testCage = new DummyCage();
 
 	@Test
 	public void soilShouldSoilCage() {
-
-		underTest.soil(testCage);
-
-		assertThat(wasSoiled, is(true));
+		int preSoilCageCleanliness = underTest.getCageCleanliness();
+		underTest.soil();
+		int postSoilCageCleanliness = underTest.getCageCleanliness();
+		assertTrue(postSoilCageCleanliness < preSoilCageCleanliness);
 	}
 
 	@Test
 	public void soilShouldReduceWasteToZero() {
 		int preSoilWaste = underTest.getWaste();
-		underTest.soil(testCage);
+		underTest.soil();
 		int postSoilWaste = underTest.getWaste();
 		assertThat(preSoilWaste != 0, is(true));
 		assertThat(postSoilWaste, is(0));
@@ -94,7 +94,7 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void tickSouldIncreaseHungerThirstBoredomBy1() {
+	public void tickShouldIncreaseHungerThirstBoredomBy1() {
 		int preTickHunger = underTest.getHunger();
 		int preTickThirst = underTest.getThirst();
 		int preTickBoredom = underTest.getBoredom();
@@ -107,4 +107,29 @@ public class OrganicDogTest {
 		assertThat(postTickBoredom - preTickBoredom, is(1));
 	}
 
+	@Test
+	public void tickShouldIncreaseWasteBy1() {
+		int preTickWaste = underTest.getWaste();
+		underTest.tick();
+		int postTickWaste = underTest.getWaste();
+		assertThat(postTickWaste - preTickWaste, is(1));
+	}
+
+	@Test
+	public void tickShouldDecreaseHappinessBy1() {
+		int preTickHappiness = underTest.getHappiness();
+		underTest.tick();
+		int postTickHappiness = underTest.getHappiness();
+		assertThat(preTickHappiness - postTickHappiness, is(1));
+	}
+
+	@Test
+	public void tickShouldTriggerSoilIfWasteIsAbove100() {
+		int preSoilCageCleanliness = underTest.getCageCleanliness();
+		for (int i = 0; i < 110; i++) {
+			underTest.tick();
+		}
+		int postSoilCageCleanliness = underTest.getCageCleanliness();
+		assertTrue(postSoilCageCleanliness < preSoilCageCleanliness);
+	}
 }

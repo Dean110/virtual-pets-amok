@@ -1,13 +1,11 @@
-# Virtual Pets AMOK!
+﻿# Virtual Pets AMOK!
 > Oh noes! Your virtual pet shelter has become a mess!
 
-Food and water and playtime aren’t enough anymore. The virtual cats are chasing the virtual dogs. The virtual organic animals are letting nature take its course in every corner, while the virtual robotic pets are getting rusty. Let’s just say things are piling up.
+## Intro
+Our week four focus was on OOP principles.  We covered Polymorphism, Inheritance, and Encapsulation.  Our project aims to test our knowledge of these topics by expanding on the previous two weeks work and building a shelter that has four different style of virtual pets.  Organic pets are joined by robotic brethern, cats and dogs are now making a mess of the shelter.  Differences between cats and dogs are simple, you can walk dogs, cats use the litter box, and dogs stay in their cage.  All pets will have a health attribute that diminishes according to cleanliness of their living area, if their happiness drops too low, or if they have other needs that have not been met.
+>We’re introducing a health attribute for pets. Organic pets have their health decreased by unclean circumstances, and by thirst or hunger growing too high. Robotic pets only lose health if they’re not oiled regularly. All pets lose health if their happiness drops too low.
 
-Thanks to the generosity of donors, leashes aren’t an issue, so you can walk all of your virtual dogs at once. This is great, since they are less like to soil their cages if walked regularly. Did I mention dogs are in cages now? Yeah, it keeps the cats from chasing them. Better keep those cages clean.
-
-Cats hang out in a communal area and use a common litter box. Don’t even bother trying to walk them. What happens if that litter box overflows? Does it reduce pets’ health?
-
-We’re introducing a health attribute for pets. Organic pets have their health decreased by unclean circumstances, and by thirst or hunger growing too high. Robotic pets only lose health if they’re not oiled regularly. All pets lose health if their happiness drops too low.
+## Requirements
 
 ### Setup
 You can copy your code from the previous project to use as a starter, or start from scratch.
