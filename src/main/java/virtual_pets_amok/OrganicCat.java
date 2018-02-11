@@ -1,20 +1,19 @@
 package virtual_pets_amok;
 
 public class OrganicCat extends Organic {
+	private Shelter litterBox;
 
 	public OrganicCat(String name, String description, Shelter shelter) {
 		this.name = name;
 		this.description = description;
+		litterBox = shelter;
 		shelter.addPet(this);
-	}
-
-	public void soil(Shelter shelter) {
-		shelter.soilLitterBox();
-		waste = 0;
 	}
 
 	@Override
 	public void soil() {
+		litterBox.soilLitterBox();
+		waste = 0;
 	}
 
 	@Override
@@ -24,16 +23,8 @@ public class OrganicCat extends Organic {
 		boredom++;
 		waste++;
 		happiness--;
-	}
-
-	public void tick(Shelter testShelter) {
-		hunger++;
-		thirst++;
-		boredom++;
-		waste++;
-		happiness--;
 		if (waste >= 100) {
-			soil(testShelter);
+			soil();
 		}
 	}
 

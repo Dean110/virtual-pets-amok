@@ -5,6 +5,7 @@ abstract public class Organic extends VirtualPet {
 	int hunger;
 	int thirst;
 	protected int waste = 10;
+
 	public Organic() {
 		super();
 	}
@@ -32,7 +33,5 @@ abstract public class Organic extends VirtualPet {
 	}
 
 	abstract public void soil();
-
-	abstract public void soil(Shelter testShelter);
 
 }

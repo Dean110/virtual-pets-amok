@@ -42,7 +42,7 @@ public class OrganicCatTest {
 	@Test
 	public void soilShouldReduceWasteToZero() {
 		int preSoilWaste = underTest.getWaste();
-		underTest.soil(testShelter);
+		underTest.soil();
 		int postSoilWaste = underTest.getWaste();
 		assertThat(preSoilWaste != 0, is(true));
 		assertThat(postSoilWaste, is(0));
@@ -53,7 +53,7 @@ public class OrganicCatTest {
 	public void soilShouldLowerLitterBoxCleanlinessBy20() {
 
 		int preSoilCleanliness = testShelter.getLitterBoxCleanliness();
-		underTest.soil(testShelter);
+		underTest.soil();
 		int postSoilCleanliness = testShelter.getLitterBoxCleanliness();
 		assertThat(preSoilCleanliness - postSoilCleanliness, is(20));
 	}
@@ -92,7 +92,7 @@ public class OrganicCatTest {
 	public void tickShouldSoilLitterBoxIfWasteIsAbove100() {
 		int preSoilCleanliness = testShelter.getLitterBoxCleanliness();
 		for (int i = 0; i < 105; i++) {
-			underTest.tick(testShelter);
+			underTest.tick();
 		}
 		int postSoilCleanliness = testShelter.getLitterBoxCleanliness();
 		assertThat(preSoilCleanliness > postSoilCleanliness, is(true));
