@@ -33,6 +33,7 @@ public class OrganicCatTest {
 
 	@Test
 	public void shouldHaveTwoCatsInTheShelter() {
+		@SuppressWarnings("unused")
 		OrganicCat underTest2 = new OrganicCat("A", "Cat", testShelter);
 		int result = testShelter.getSize();
 		assertThat(result, is(2));

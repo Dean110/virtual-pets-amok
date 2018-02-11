@@ -6,6 +6,7 @@ public abstract class VirtualPet {
 	protected String description;
 	protected int boredom;
 	protected int happiness;
+	protected int health;
 
 	public VirtualPet() {
 		super();
@@ -36,6 +37,11 @@ public abstract class VirtualPet {
 	public int getHappiness() {
 
 		return happiness;
+	}
+
+	public int getHealth() {
+	
+		return health;
 	}
 
 }

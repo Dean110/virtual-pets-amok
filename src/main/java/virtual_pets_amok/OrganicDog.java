@@ -1,6 +1,6 @@
 package virtual_pets_amok;
 
-public class OrganicDog extends Organic {
+public class OrganicDog extends Organic implements Walkable {
 
 	private int cageCleanliness;
 
@@ -9,6 +9,7 @@ public class OrganicDog extends Organic {
 		this.description = description;
 	}
 
+	@Override
 	public void walk() {
 		waste -= 30;
 		boredom -= 20;
