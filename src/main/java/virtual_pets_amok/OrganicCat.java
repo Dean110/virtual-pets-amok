@@ -28,4 +28,9 @@ public class OrganicCat extends Organic {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return name;
+
+	}
 }

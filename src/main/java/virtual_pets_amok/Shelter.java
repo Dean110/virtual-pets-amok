@@ -22,6 +22,10 @@ public class Shelter {
 		litterBoxCleanliness -= 20;
 	}
 
+	public VirtualPet getPet(String name) {
+		return pets.get(name);
+	}
+
 	public int getSize() {
 		// TODO Auto-generated method stub
 		return pets.size();
