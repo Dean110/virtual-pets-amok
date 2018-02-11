@@ -10,16 +10,16 @@ Our week four focus was on OOP principles.  We covered Polymorphism, Inheritance
 ### Setup
 You can copy your code from the previous project to use as a starter, or start from scratch.
 
--[ ] Create a Java project in Eclipse named virtual-pets-amok.
--[ ] Create a README.md file in your project folder to describe what you’ve done with your project. No fancy formatting is necessary. Just separate paragraphs with an empty line. 
-	-[ ](If you’d like to learn more about Markdown formatting, check out the Github Markdown Guide.)
--[ ] Create a GitHub repository also named virtual-pets-amok and set it up so that you can push your code there from your Eclipse project. Do this now. It’s the least fun part, so just get it out of the way.
+-[x] Create a Java project in Eclipse named virtual-pets-amok.
+-[x] Create a README.md file in your project folder to describe what you’ve done with your project. No fancy formatting is necessary. Just separate paragraphs with an empty line. 
+	-[x](If you’d like to learn more about Markdown formatting, check out the Github Markdown Guide.)
+-[x] Create a GitHub repository also named virtual-pets-amok and set it up so that you can push your code there from your Eclipse project. Do this now. It’s the least fun part, so just get it out of the way.
 Required Tasks
 ### General
 - [ ] introduce ways to track:
-- [ ] cage cleanliness for organic dogs
-- [ ] shelter litter box cleanliness for organic cats
-- [ ] oil/maintenance level for robot animals
+	- [x] cage cleanliness for organic dogs
+	- [x] shelter litter box cleanliness for organic cats
+	- [ ] oil/maintenance level for robot animals
 
 #### All classes
 - [ ] Encapsulate all instance variables.
@@ -27,6 +27,42 @@ Required Tasks
 
 #### VirtualPet class and related subclasses/interfaces
 In addition to the last project’s requirements:
+>* - [x] Create a main method that…
+>	* - [x] implements a game loop.
+>	* - [x] asks for user input.
+>	* - [x] writes output to the console.
+>	* - [x] calls VirtualPetShelter’s tick method after each interaction
+>* - [x] Available user interface actions should include (at minimum)…
+>	* - [x] feeding all the pets
+>	* - [x] watering all the pets
+>	* - [x] playing with an individual pet, which should display a list of pet names and descriptions, allowing a user to select one
+>	* - [x] allow adoption of a pet, which should display a list of pet names and descriptions, allowing a user to select one
+>	* - [x] allow intake of a pet, prompting the user for the pet’s information, requiring the user to (at minimum) specify name and description
+>
+>#### VirtualPetShelter class
+>* - [x] Include appropriate instance variable(s) to store the pets who reside at the shelter
+>* - [x] Include methods that:
+>	* - [x] return a Collection of all of the pets in the shelter
+>	* - [x] return a specific VirtualPet given its name
+>	* - [x] allow intake of a homeless pet
+>	* - [x] allow adoption of a homeless pet
+>	* - [x] feed all of the pets in the shelter
+>	* - [x] water all of the pets in the shelter
+>	* - [x] plays (or performs some other interaction(s)) with an individual pet in the shelter
+>* - [x] Include a tick method that calls the tick method for each of the pets in the shelter, updating their needs
+>
+>#### VirtualPet class
+>* - [x] The requirements from last week’s project:
+>	* Create a tick() method that represents the passage of time.
+> 	* Create at least three instance variables (aka attributes aka properties aka fields).
+>	* Create at least three methods (messages you send to your pet).
+>
+>* - [x] Include instance variables representing:
+>	* - [x] name
+>	* - [x] description
+>	* - [x] include a constructor that accepts a name and description
+>	* - [x] include a constructor that, in addition to name and description, accepts default values for the pet’s attributes (hunger, boredom, etc)
+>	* - [x] Do not include a default (zero arguments) constructor.
 
 - [ ] create a model that allows for dogs and cats, either of which may be robotic
 - [ ] introduce an attribute (instance variable) representing overall health that is updated as a result of other attributes moving in a negative or positive direction, influencing happiness

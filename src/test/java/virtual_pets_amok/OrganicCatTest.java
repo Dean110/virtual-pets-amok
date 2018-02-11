@@ -50,6 +50,7 @@ public class OrganicCatTest {
 
 	@Test
 	public void soilShouldLowerLitterBoxCleanlinessBy20() {
+
 		int preSoilCleanliness = testShelter.getLitterBoxCleanliness();
 		underTest.soil(testShelter);
 		int postSoilCleanliness = testShelter.getLitterBoxCleanliness();
