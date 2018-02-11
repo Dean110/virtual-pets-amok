@@ -42,4 +42,11 @@ public class RoboticDogTest {
 		assertThat(prePlayBoredom - postPlayBoredom, is(40));
 	}
 
+	@Test
+	public void walkShouldIncreaseHappinessBy40() {
+		int preWalk = underTest.getHappiness();
+		underTest.walk();
+		int postWalk = underTest.getHappiness();
+		assertThat(postWalk - preWalk, is(40));
+	}
 }

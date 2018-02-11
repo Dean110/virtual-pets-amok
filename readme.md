@@ -27,54 +27,54 @@ Required Tasks
 
 #### VirtualPet class and related subclasses/interfaces
 In addition to the last project’s requirements:
->* - [x] Create a main method that…
->	* - [x] implements a game loop.
->	* - [x] asks for user input.
->	* - [x] writes output to the console.
->	* - [x] calls VirtualPetShelter’s tick method after each interaction
->* - [x] Available user interface actions should include (at minimum)…
->	* - [x] feeding all the pets
->	* - [x] watering all the pets
->	* - [x] playing with an individual pet, which should display a list of pet names and descriptions, allowing a user to select one
->	* - [x] allow adoption of a pet, which should display a list of pet names and descriptions, allowing a user to select one
->	* - [x] allow intake of a pet, prompting the user for the pet’s information, requiring the user to (at minimum) specify name and description
+>* - [ ] Create a main method that…
+>	* - [ ] implements a game loop.
+>	* - [ ] asks for user input.
+>	* - [ ] writes output to the console.
+>	* - [ ] calls VirtualPetShelter’s tick method after each interaction
+>* - [ ] Available user interface actions should include (at minimum)…
+>	* - [ ] feeding all the pets
+>	* - [ ] watering all the pets
+>	* - [ ] playing with an individual pet, which should display a list of pet names and descriptions, allowing a user to select one
+>	* - [ ] allow adoption of a pet, which should display a list of pet names and descriptions, allowing a user to select one
+>	* - [ ] allow intake of a pet, prompting the user for the pet’s information, requiring the user to (at minimum) specify name and description
 >
 >#### VirtualPetShelter class
->* - [x] Include appropriate instance variable(s) to store the pets who reside at the shelter
->* - [x] Include methods that:
->	* - [x] return a Collection of all of the pets in the shelter
->	* - [x] return a specific VirtualPet given its name
->	* - [x] allow intake of a homeless pet
->	* - [x] allow adoption of a homeless pet
->	* - [x] feed all of the pets in the shelter
->	* - [x] water all of the pets in the shelter
->	* - [x] plays (or performs some other interaction(s)) with an individual pet in the shelter
->* - [x] Include a tick method that calls the tick method for each of the pets in the shelter, updating their needs
+>* - [ ] Include appropriate instance variable(s) to store the pets who reside at the shelter
+>* - [ ] Include methods that:
+>	* - [ ] return a Collection of all of the pets in the shelter
+>	* - [ ] return a specific VirtualPet given its name
+>	* - [ ] allow intake of a homeless pet
+>	* - [ ] allow adoption of a homeless pet
+>	* - [ ] feed all of the pets in the shelter
+>	* - [ ] water all of the pets in the shelter
+>	* - [ ] plays (or performs some other interaction(s)) with an individual pet in the shelter
+>* - [ ] Include a tick method that calls the tick method for each of the pets in the shelter, updating their needs
 >
 >#### VirtualPet class
->* - [x] The requirements from last week’s project:
->	* Create a tick() method that represents the passage of time.
-> 	* Create at least three instance variables (aka attributes aka properties aka fields).
->	* Create at least three methods (messages you send to your pet).
->
+>* - [ ] The requirements from last week’s project:
+>	* - [x] Create a tick() method that represents the passage of time.
+> 	* - [x] Create at least three instance variables (aka attributes aka properties aka fields).
+>	* - [x] Create at least three methods (messages you send to your pet).
+> 
 >* - [x] Include instance variables representing:
 >	* - [x] name
 >	* - [x] description
 >	* - [x] include a constructor that accepts a name and description
->	* - [x] include a constructor that, in addition to name and description, accepts default values for the pet’s attributes (hunger, boredom, etc)
+>	* - [ ] ~~include a constructor that, in addition to name and description, accepts default values for the pet’s attributes (hunger, boredom, etc)~~
 >	* - [x] Do not include a default (zero arguments) constructor.
 
 - [ ] create a model that allows for dogs and cats, either of which may be robotic
 - [ ] introduce an attribute (instance variable) representing overall health that is updated as a result of other attributes moving in a negative or positive direction, influencing happiness
-- [ ] introduce methods that allow for:
-	- [ ] oiling robotic pets
-	- [ ] walking dogs, decreasing the likelihood that organic dogs will soil their cages, while increasing happiness in all dogs
-- [ ] do not allow:
-	- [ ] feeding/watering robotic pets
-	- [ ] oiling organic pets
-- [ ] modify the tick method to return a value indicating the amount of waste a pet creates, which should contribute to either:
-	- [ ] amount of waste in the litter box
-	- [ ] amount of waste in an individual dog cage
+- [x] introduce methods that allow for:
+	- [x] oiling robotic pets
+	- [x] walking dogs, decreasing the likelihood that organic dogs will soil their cages, while increasing happiness in all dogs
+- [x] do not allow:
+	- [x] feeding/watering robotic pets
+	- [x] oiling organic pets
+- [x] modify the tick method to return a value indicating the amount of waste a pet creates, which should contribute to either:
+	- [x] amount of waste in the litter box
+	- [x] amount of waste in an individual dog cage
 
 #### VirtualPetShelter class
 In addition to the last project’s requirements:

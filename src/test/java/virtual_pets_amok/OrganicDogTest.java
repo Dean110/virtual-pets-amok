@@ -59,6 +59,14 @@ public class OrganicDogTest {
 	}
 
 	@Test
+	public void walkShouldIncreaseHappinessBy40() {
+		int preWalk = underTest.getHappiness();
+		underTest.walk();
+		int postWalk = underTest.getHappiness();
+		assertThat(postWalk - preWalk, is(40));
+	}
+
+	@Test
 	public void playShouldReduceBoredomBy40() {
 		int prePlayBoredom = underTest.getBoredom();
 		underTest.play();
