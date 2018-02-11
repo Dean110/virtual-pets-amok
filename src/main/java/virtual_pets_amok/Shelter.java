@@ -73,4 +73,15 @@ public class Shelter {
 
 		}
 	}
+
+	public boolean isThereADeadPet() {
+		boolean doWeHaveADeadPet = false;
+		for (Entry<String, VirtualPet> checkedPet : pets.entrySet()) {
+			String key = checkedPet.getKey();
+			if (pets.get(key).getIsThisPetDead()) {
+				doWeHaveADeadPet = true;
+			}
+		}
+		return doWeHaveADeadPet;
+	}
 }

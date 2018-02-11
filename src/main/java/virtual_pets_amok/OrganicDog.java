@@ -27,16 +27,4 @@ public class OrganicDog extends Organic implements Walkable {
 		return cageCleanliness;
 	}
 
-	@Override
-	public void tick() {
-		hunger++;
-		thirst++;
-		boredom++;
-		waste++;
-		happiness--;
-		if (waste >= 100) {
-			soil();
-		}
-	}
-
 }

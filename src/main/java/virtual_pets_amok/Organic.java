@@ -34,4 +34,25 @@ abstract public class Organic extends VirtualPet {
 
 	abstract public void soil();
 
+	@Override
+	public void tick() {
+		hunger++;
+		thirst++;
+		boredom++;
+		waste++;
+		happiness--;
+		if (waste >= 100) {
+			soil();
+		}
+		if (hunger >= 100) {
+			hunger = 100;
+			health -= 20;
+		}
+		if (thirst >= 100) {
+			thirst = 100;
+			health -= 20;
+		}
+
+	}
+
 }

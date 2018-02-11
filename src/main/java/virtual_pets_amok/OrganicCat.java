@@ -17,18 +17,6 @@ public class OrganicCat extends Organic {
 	}
 
 	@Override
-	public void tick() {
-		hunger++;
-		thirst++;
-		boredom++;
-		waste++;
-		happiness--;
-		if (waste >= 100) {
-			soil();
-		}
-	}
-
-	@Override
 	public String toString() {
 		return name;
 

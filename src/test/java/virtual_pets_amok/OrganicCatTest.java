@@ -97,4 +97,13 @@ public class OrganicCatTest {
 		int postSoilCleanliness = testShelter.getLitterBoxCleanliness();
 		assertThat(preSoilCleanliness > postSoilCleanliness, is(true));
 	}
+
+	@Test
+	public void tickShouldCapHungerAt100() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickHunger = underTest.getHunger();
+		assertThat(postTickHunger, is(100));
+	}
 }

@@ -7,6 +7,7 @@ public abstract class VirtualPet {
 	protected int boredom;
 	protected int happiness;
 	protected int health;
+	protected boolean isThisPetDead;
 
 	public VirtualPet() {
 		super();
@@ -40,8 +41,13 @@ public abstract class VirtualPet {
 	}
 
 	public int getHealth() {
-	
+
 		return health;
+	}
+
+	public boolean getIsThisPetDead() {
+		// TODO Auto-generated method stub
+		return isThisPetDead;
 	}
 
 }
