@@ -106,4 +106,49 @@ public class OrganicCatTest {
 		int postTickHunger = underTest.getHunger();
 		assertThat(postTickHunger, is(100));
 	}
+
+	@Test
+	public void tickShouldLowerHealthIfHungerIsAt100() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickHealth = underTest.getHealth();
+		assertThat(postTickHealth < 0, is(true));
+
+	}
+
+	@Test
+	public void tickShouldCapThirstAt100() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickThirst = underTest.getThirst();
+		assertThat(postTickThirst, is(100));
+	}
+
+	@Test
+	public void tickShouldLowerHealthIfThirstIsAt100() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickHealth = underTest.getHealth();
+		assertThat(postTickHealth < 0, is(true));
+	}
+
+	@Test
+	public void tickShouldCapBoredom() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickBoredom = underTest.getBoredom();
+		assertThat(postTickBoredom, is(100));
+	}
+
+	public void tickShouldLowerHappinessIfBoredomIsAt100() {
+		for (int i = 0; i <= 120; i++) {
+			underTest.tick();
+		}
+		int postTickHappiness = underTest.getHappiness();
+		assertThat(postTickHappiness < 0, is(true));
+	}
 }

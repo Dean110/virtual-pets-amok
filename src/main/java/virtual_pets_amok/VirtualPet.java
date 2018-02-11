@@ -46,7 +46,7 @@ public abstract class VirtualPet {
 	}
 
 	public boolean getIsThisPetDead() {
-		// TODO Auto-generated method stub
+
 		return isThisPetDead;
 	}
 

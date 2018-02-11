@@ -2,8 +2,6 @@ package virtual_pets_amok;
 
 import java.util.Scanner;
 
-import virtual_pet_shelter.VirtualPetShelter;
-
 public class VirtualPetsAmokApp {
 
 	public static void main(String[] args) {

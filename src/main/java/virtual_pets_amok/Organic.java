@@ -52,6 +52,10 @@ abstract public class Organic extends VirtualPet {
 			thirst = 100;
 			health -= 20;
 		}
+		if (boredom >= 100) {
+			boredom = 100;
+			happiness -= 20;
+		}
 
 	}
 
