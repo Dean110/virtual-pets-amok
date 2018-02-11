@@ -1,13 +1,13 @@
 package virtual_pets_amok;
 
 public class ReportGenerator {
-	public static String petStats(OrganicCat pet) {
-		String name = formatPetNameWithSpaces(pet);
+	public String petStats(Organic virtualPet) {
+		String name = formatPetNameWithSpaces(virtualPet);
 
-		return name + "|" + pet.getHunger() + "\t|" + pet.getThirst() + "\t|" + pet.getBoredom();
+		return name + "|" + virtualPet.getHunger() + "\t|" + virtualPet.getThirst() + "\t|" + virtualPet.getBoredom();
 	}
 
-	public static String formatPetNameWithSpaces(VirtualPet pet) {
+	public String formatPetNameWithSpaces(VirtualPet pet) {
 		String output = pet.getName();
 		if (output.length() == 16) {
 			return output;
