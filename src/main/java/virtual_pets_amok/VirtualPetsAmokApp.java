@@ -5,15 +5,14 @@ import java.util.Scanner;
 public class VirtualPetsAmokApp {
 
 	public static void main(String[] args) {
-		
+
 		Shelter myShelter = new Shelter();
 		ReportGenerator report = new ReportGenerator();
 		Scanner input = new Scanner(System.in);
-		
+
 		String mainMenuChoice;
 		String petChoice;
-		
-		
+
 		// App Intro and default dog added
 		System.out.println("Welcome to the Harding Hotel for Misfit Pets!");
 		System.out.println();
@@ -26,13 +25,24 @@ public class VirtualPetsAmokApp {
 		System.out.println();
 		System.out.println("After a fierce fight you finally bring the dog inside the shelter.\n"
 				+ "You decide to name him Bruce Wee, and it appears that he likes to bite and fight!");
-		
+
 		myShelter.addPet(new OrganicDog("Bruce Wee", "he likes to bite and fight."));
 		System.out.println();
-		
-		//Game Loop
-		while()
-		
+
+		// Game Loop
+		// while (myShelter) {
+		if (myShelter.getSize() < 1) {
+			System.out.println("We are out of pets! Go find some more before we lose our grant money.");
+			System.out.println();
+
+		} else {
+			if (myShelter.getSize() == 1) {
+				System.out.println("This is how your pet is doing:");
+			} else {
+				System.out.println("This is how your pets are doing:");
+			}
+		}
+
 	}
 
 }

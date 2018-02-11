@@ -4,10 +4,10 @@ public abstract class VirtualPet {
 
 	protected String name;
 	protected String description;
-	protected int boredom;
-	protected int happiness;
-	protected int health;
-	protected boolean isThisPetDead;
+	protected int boredom = 0;
+	protected int happiness = 100;
+	protected int health = 100;
+	protected boolean isThisPetDead = false;
 
 	public VirtualPet() {
 		super();

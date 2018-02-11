@@ -2,9 +2,9 @@ package virtual_pets_amok;
 
 abstract public class Organic extends VirtualPet {
 
-	int hunger;
-	int thirst;
-	protected int waste = 10;
+	int hunger = 0;
+	int thirst = 0;
+	protected int waste = 0;
 
 	public Organic() {
 		super();
@@ -55,6 +55,14 @@ abstract public class Organic extends VirtualPet {
 		if (boredom >= 100) {
 			boredom = 100;
 			happiness -= 20;
+		}
+		if (happiness <= 0) {
+			happiness = 0;
+			health -= 10;
+		}
+		if (health <= 0) {
+			health = 0;
+			isThisPetDead = true;
 		}
 
 	}

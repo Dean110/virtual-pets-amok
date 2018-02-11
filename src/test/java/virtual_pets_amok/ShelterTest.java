@@ -131,27 +131,27 @@ public class ShelterTest {
 		assertThat(petCount, is(0));
 	}
 
-	// @Test
-	// public void shouldReturnTrueForIsThereADeadPet() {
-	// underTest.addPet(testPet);
-	// for (int i = 0; i < 51; i++) {
-	// underTest.tick();
-	// }
-	// boolean result = underTest.isThereADeadPet();
-	// assertThat(result, is(true));
-	// }
-	//
-	// @Test
-	// public void shouldReturnFalseForIsThereADeadPet() {
-	// underTest.admit(testPet);
-	//
-	// boolean result = underTest.isThereADeadPet();
-	// assertThat(result, is(false));
-	// }
-	//
-	// @Test
-	// public void shouldReturnFalseForIsThereADeadPetIfWeHaveNoPets() {
-	// boolean result = underTest.isThereADeadPet();
-	// assertThat(result, is(false));
-	// }
+	@Test
+	public void shouldReturnTrueForIsThereADeadPet() {
+		underTest.addPet(testPet);
+		for (int i = 0; i < 51; i++) {
+			underTest.tick();
+		}
+		boolean result = underTest.isThereADeadPet();
+		assertThat(result, is(true));
+	}
+
+	@Test
+	public void shouldReturnFalseForIsThereADeadPet() {
+		underTest.addPet(testPet);
+
+		boolean result = underTest.isThereADeadPet();
+		assertThat(result, is(false));
+	}
+
+	@Test
+	public void shouldReturnFalseForIsThereADeadPetIfWeHaveNoPets() {
+		boolean result = underTest.isThereADeadPet();
+		assertThat(result, is(false));
+	}
 }
