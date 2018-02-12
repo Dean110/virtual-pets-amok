@@ -31,7 +31,14 @@ public class OrganicDogTest {
 		underTest.feed();
 		int postFeedHunger = underTest.getHunger();
 		assertThat(preFeedHunger - postFeedHunger, is(20));
+	}
 
+	@Test
+	public void feedShouldIncreaseWaste() {
+		int preFeedWaste = underTest.getWaste();
+		underTest.feed();
+		int postFeedWaste = underTest.getWaste();
+		assertThat(preFeedWaste < postFeedWaste, is(true));
 	}
 
 	@Test
@@ -43,11 +50,11 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void walkShouldReduceWasteBy30() {
+	public void walkShouldReduceWaste() {
 		int preWalkWaste = underTest.getWaste();
 		underTest.walk();
 		int postWalkWaste = underTest.getWaste();
-		assertThat(preWalkWaste - postWalkWaste, is(30));
+		assertThat(preWalkWaste > postWalkWaste, is(true));
 	}
 
 	@Test
@@ -59,27 +66,27 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void walkShouldIncreaseHappinessBy40() {
+	public void walkShouldIncreaseHappiness() {
 		int preWalk = underTest.getHappiness();
 		underTest.walk();
 		int postWalk = underTest.getHappiness();
-		assertThat(postWalk - preWalk, is(40));
+		assertThat(postWalk > preWalk, is(true));
 	}
 
 	@Test
-	public void playShouldReduceBoredomBy40() {
+	public void playShouldReduceBoredom() {
 		int prePlayBoredom = underTest.getBoredom();
 		underTest.play();
 		int postPlayBoredom = underTest.getBoredom();
-		assertThat(prePlayBoredom - postPlayBoredom, is(40));
+		assertThat(prePlayBoredom > postPlayBoredom, is(true));
 	}
 
 	@Test
-	public void playShouldIncreaseHapinessBy30() {
+	public void playShouldIncreaseHapiness() {
 		int prePlayBoredom = underTest.getHappiness();
 		underTest.play();
 		int postPlayBoredom = underTest.getHappiness();
-		assertThat(postPlayBoredom - prePlayBoredom, is(30));
+		assertThat(postPlayBoredom > prePlayBoredom, is(true));
 
 	}
 
@@ -139,5 +146,92 @@ public class OrganicDogTest {
 		}
 		int postSoilCageCleanliness = underTest.getCageCleanliness();
 		assertTrue(postSoilCageCleanliness < preSoilCageCleanliness);
+	}
+
+	@Test
+	public void organicDogsHaveAStartingHungerThirstAndWasteBetween20And80() {
+		for (int i = 0; i < 10001; i++) {
+			assertThat(underTest.getHunger() <= 80, is(true));
+			assertThat(underTest.getHunger() >= 20, is(true));
+			assertThat(underTest.getThirst() <= 80, is(true));
+			assertThat(underTest.getThirst() >= 20, is(true));
+			assertThat(underTest.getWaste() <= 80, is(true));
+			assertThat(underTest.getWaste() >= 20, is(true));
+		}
+
+	}
+
+	@Test
+	public void organicDogsHaveAStartingBoredomBetween20And80() {
+		for (int i = 0; i < 10001; i++) {
+			assertThat(underTest.getBoredom() <= 80, is(true));
+			assertThat(underTest.getBoredom() >= 20, is(true));
+		}
+
+	}
+
+	@Test
+	public void organicDogsHaveAStartingHappinessBetween100And50() {
+		for (int i = 0; i < 10001; i++) {
+			assertThat(underTest.getHappiness() <= 100, is(true));
+			assertThat(underTest.getHappiness() >= 50, is(true));
+		}
+
+	}
+
+	@Test
+	public void feedShouldNotLowerHungerBelow0() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.feed();
+		}
+		assertThat(underTest.getHunger(), is(0));
+	}
+
+	@Test
+	public void waterShouldNotLowerThirstBelow0() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.water();
+		}
+		assertThat(underTest.getThirst(), is(0));
+	}
+
+	@Test
+	public void tickShouldDecreaseHappinessIfCageCleanlinessIsAt0() {
+		for (int i = 0; i < 10; i++) {
+			underTest.soil();
+		}
+		for (int i = 0; i < 100; i++) {
+			underTest.tick();
+		}
+		assertThat(underTest.getHappiness(), is(0));
+	}
+
+	@Test
+	public void soilShouldCapCageCleanlinessAt0() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.soil();
+		}
+		assertThat(underTest.getCageCleanliness(), is(0));
+	}
+
+	@Test
+	public void walkShouldLimitAffectedValuesTo0Or100CaseDependent() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.walk();
+		}
+		assertThat(underTest.getWaste(), is(0));
+		assertThat(underTest.getBoredom(), is(0));
+		assertThat(underTest.getHappiness(), is(100));
+	}
+
+	@Test
+	public void playShouldLimitItsEffectTo0Or100CaseDependent() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.play();
+		}
+
+		assertThat(underTest.getBoredom(), is(0));
+		assertThat(underTest.getHappiness(), is(100));
+
 	}
 }

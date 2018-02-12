@@ -20,6 +20,9 @@ public class Shelter {
 
 	public void soilLitterBox() {
 		litterBoxCleanliness -= 20;
+		if (litterBoxCleanliness <= 0) {
+			litterBoxCleanliness = 0;
+		}
 	}
 
 	public VirtualPet getPet(String name) {
@@ -105,8 +108,11 @@ public class Shelter {
 		}
 	}
 
-	public void cleanDogCage(String petName) {
-		((OrganicDog) pets.get(petName)).cleanCage();
-
+	public void cleanAllDogCages() {
+		for (Entry<String, VirtualPet> pet : pets.entrySet()) {
+			if (pet.getValue() instanceof OrganicDog) {
+				((OrganicDog) pet.getValue()).cleanCage();
+			}
+		}
 	}
 }

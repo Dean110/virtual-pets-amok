@@ -113,7 +113,7 @@ public class OrganicCatTest {
 			underTest.tick();
 		}
 		int postTickHealth = underTest.getHealth();
-		assertThat(postTickHealth < 0, is(true));
+		assertThat(postTickHealth <= 0, is(true));
 
 	}
 
@@ -132,7 +132,7 @@ public class OrganicCatTest {
 			underTest.tick();
 		}
 		int postTickHealth = underTest.getHealth();
-		assertThat(postTickHealth < 0, is(true));
+		assertThat(postTickHealth <= 0, is(true));
 	}
 
 	@Test
@@ -151,4 +151,16 @@ public class OrganicCatTest {
 		int postTickHappiness = underTest.getHappiness();
 		assertThat(postTickHappiness < 0, is(true));
 	}
+
+	@Test
+	public void tickShouldDecreaseHappinessIfLitterBoxCleanlinessIsAt0() {
+		for (int i = 0; i < 10; i++) {
+			underTest.soil();
+		}
+		for (int i = 0; i < 100; i++) {
+			underTest.tick();
+		}
+		assertThat(underTest.getHappiness(), is(0));
+	}
+
 }

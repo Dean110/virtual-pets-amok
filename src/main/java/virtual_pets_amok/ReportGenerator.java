@@ -7,16 +7,27 @@ public class ReportGenerator {
 	public String combinedPetStats(Shelter pets) {
 		String combinedStats = "";
 		Collection<VirtualPet> petList = pets.pets();
-		String organicPetStats = "";
+		String organicCatPetStats = "";
 		for (VirtualPet pet : petList) {
-			if (pet instanceof Organic) {
-				organicPetStats += petStats((Organic) pet) + "\n";
+			if (pet instanceof OrganicCat) {
+				organicCatPetStats += petStats((OrganicCat) pet) + "\n";
 			}
 		}
-		if (!organicPetStats.isEmpty()) {
-			combinedStats += "Organic Pets\t|Hunger\t|Thirst\t|Boredom|Happiness|Health\n";
-			combinedStats += "----------------|-------|-------|-------|---------|-------\n";
-			combinedStats += organicPetStats + "\n\n";
+		if (!organicCatPetStats.isEmpty()) {
+			combinedStats += "Organic Cats\t|Hunger\t|Thirst\t|Boredom|Happiness|Waste  |Health\n";
+			combinedStats += "----------------|-------|-------|-------|---------|-------|------\n";
+			combinedStats += organicCatPetStats + "\n\n";
+		}
+		String organicDogPetStats = "";
+		for (VirtualPet pet : petList) {
+			if (pet instanceof OrganicDog) {
+				organicDogPetStats += petStats((OrganicDog) pet) + "\n";
+			}
+		}
+		if (!organicDogPetStats.isEmpty()) {
+			combinedStats += "Organic Cats\t|Hunger\t|Thirst\t|Boredom|Happiness|Waste  |Health |Cage Cleanliness\n";
+			combinedStats += "----------------|-------|-------|-------|---------|-------|-------|----------------\n";
+			combinedStats += organicDogPetStats + "\n\n";
 		}
 		String roboticPetStats = "";
 		for (VirtualPet pet : petList) {
@@ -44,11 +55,21 @@ public class ReportGenerator {
 				+ virtualPet.getHealth();
 	}
 
-	public String petStats(Organic virtualPet) {
+	public String petStats(OrganicDog virtualPet) {
 		String name = formatPetNameWithSpaces(virtualPet);
 
 		return name + "|" + virtualPet.getHunger() + "\t|" + virtualPet.getThirst() + "\t|" + virtualPet.getBoredom()
-				+ "\t|" + virtualPet.getHappiness() + "\t  |" + virtualPet.getHealth();
+				+ "\t|" + virtualPet.getHappiness() + "\t  |" + virtualPet.getWaste() + "\t  |" + virtualPet.getHealth()
+				+ "\t  |" + virtualPet.getCageCleanliness();
+
+	}
+
+	public String petStats(OrganicCat virtualPet) {
+		String name = formatPetNameWithSpaces(virtualPet);
+
+		return name + "|" + virtualPet.getHunger() + "\t|" + virtualPet.getThirst() + "\t|" + virtualPet.getBoredom()
+				+ "\t|" + virtualPet.getHappiness() + "\t  |" + virtualPet.getWaste() + "\t  |"
+				+ virtualPet.getHealth();
 	}
 
 	public String formatPetNameWithSpaces(VirtualPet pet) {

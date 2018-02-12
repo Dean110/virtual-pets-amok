@@ -1,6 +1,6 @@
 package virtual_pets_amok;
 
-public class Robotic extends VirtualPet {
+public abstract class Robotic extends VirtualPet {
 
 	@Override
 	public void tick() {
@@ -23,6 +23,9 @@ public class Robotic extends VirtualPet {
 
 	public void oil() {
 		health += 20;
+		if (health >= 100) {
+			health = 100;
+		}
 	}
 
 }

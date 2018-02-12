@@ -7,11 +7,16 @@ public class RoboticDog extends Robotic implements Walkable {
 		this.description = description;
 	}
 
-	// From Walkable
 	@Override
 	public void walk() {
 		boredom -= 20;
+		if (boredom <= 0) {
+			boredom = 0;
+		}
 		happiness += 40;
+		if (happiness >= 100) {
+			happiness = 100;
+		}
 	}
 
 }

@@ -5,7 +5,12 @@ import java.util.Scanner;
 public class VirtualPetsAmokApp {
 
 	public static void main(String[] args) {
-
+		/**
+		 * I commented out multiple examples of different VirtualPet instances below for
+		 * you to uncomment and use to test the different functionalities of the
+		 * program. Adding pets is still supported, but it's kind of a pain to do it 10
+		 * times in the app. Just trying to make life easier for you.
+		 */
 		Shelter myShelter = new Shelter();
 		ReportGenerator report = new ReportGenerator();
 		Scanner input = new Scanner(System.in);
@@ -26,8 +31,24 @@ public class VirtualPetsAmokApp {
 				+ "You decide to name him Bruce Wee, and it appears that he likes to bite and fight!");
 
 		myShelter.addPet(new OrganicDog("Bruce Wee", "he likes to bite and fight."));
-		System.out.println();
+		// myShelter.addPet(new OrganicDog("Bosco", "his farts are worse than his
+		// bite."));
+		// myShelter.addPet(new OrganicCat("Spinx", "she was a lover and a fighter.",
+		// myShelter));
+		// myShelter.addPet(new OrganicCat("Nick", "his name rhymes with \'pick\'.",
+		// myShelter));
+		// myShelter.addPet(new RoboticDog("K-9", "he is a doctor's best friend"));
+		// myShelter.addPet(new RoboticDog("Muffit", "he can smell Cylons a mile
+		// away."));
+		// myShelter.addPet(new RoboticCat("Black Lion", "he defends the universe in his
+		// spare time.", myShelter));
+		// myShelter.addPet(new RoboticCat("Green Lion", "he helps the Black Lion.",
+		// myShelter));
+		// myShelter.addPet(new OrganicDog("Dixie", "she likes ride in trucks and eat
+		// ice cream."));
+		// myShelter.addPet(new OrganicDog("Chewy", "she likes to jump and play."));
 
+		System.out.println();
 		// Game Loop
 		while (!myShelter.isThereADeadPet()) {
 			if (myShelter.getSize() < 1) {
@@ -44,7 +65,7 @@ public class VirtualPetsAmokApp {
 				System.out.println();
 				System.out.println(report.combinedPetStats(myShelter));
 			}
-			System.out.println();
+
 			printMainUserMenu();
 			mainMenuChoice = input.nextLine();
 			switch (mainMenuChoice) {
@@ -77,10 +98,8 @@ public class VirtualPetsAmokApp {
 				break;
 			}
 			case "6": {
-				System.out.println("Which dog's cage would you like to clean?");
-				System.out.println(report.displayOrganicDogsAndCageCleanliness(myShelter));
-				petChoice = input.nextLine();
-				myShelter.cleanDogCage(petChoice);
+				myShelter.cleanAllDogCages();
+				System.out.println("All cages look like new.");
 				break;
 			}
 			case "7": {
@@ -138,12 +157,11 @@ public class VirtualPetsAmokApp {
 			}
 			myShelter.tick();
 		}
-
+		System.out.println("A pet passed away under your watch, try not to let that happen at your next job.");
 		input.close();
 	}
 
 	public static void printMainUserMenu() {
-		System.out.println();
 		System.out.println("What would you like to do next?");
 		System.out.println("-------------------------------");
 		System.out.println("1. Feed all pets.");
@@ -151,10 +169,9 @@ public class VirtualPetsAmokApp {
 		System.out.println("3. Walk all dogs.");
 		System.out.println("4. Play with a pet.");
 		System.out.println("5. Oil all robotic pets.");
-		System.out.println("6. Clean an organic dog's cage.");
+		System.out.println("6. Clean all organic dogs' cages.");
 		System.out.println("7. Clean the shelter litter box.");
 		System.out.println("8. Bring a pet in off the streets.");
 		System.out.println("9. Send a pet to a new home.");
-		System.out.println();
 	}
 }

@@ -35,18 +35,36 @@ public class RoboticDogTest {
 	}
 
 	@Test
-	public void playShouldReduceBoredomBy40() {
+	public void playShouldReduceBoredom() {
 		int prePlayBoredom = underTest.getBoredom();
 		underTest.play();
 		int postPlayBoredom = underTest.getBoredom();
-		assertThat(prePlayBoredom - postPlayBoredom, is(40));
+		assertThat(prePlayBoredom > postPlayBoredom, is(true));
 	}
 
 	@Test
-	public void walkShouldIncreaseHappinessBy40() {
+	public void walkShouldIncreaseHappiness() {
 		int preWalk = underTest.getHappiness();
 		underTest.walk();
 		int postWalk = underTest.getHappiness();
-		assertThat(postWalk - preWalk, is(40));
+		assertThat(postWalk > preWalk, is(true));
+	}
+
+	@Test
+	public void walkShouldLimitAffectedValuesTo0Or100CaseDependent() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.walk();
+		}
+
+		assertThat(underTest.getBoredom(), is(0));
+		assertThat(underTest.getHappiness(), is(100));
+	}
+
+	@Test
+	public void oilShouldNotIncreaseHealthAbove100() {
+		for (int i = 0; i < 1000; i++) {
+			underTest.oil();
+		}
+		assertThat(underTest.getHealth(), is(100));
 	}
 }

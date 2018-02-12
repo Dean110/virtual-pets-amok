@@ -1,10 +1,12 @@
 package virtual_pets_amok;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 abstract public class Organic extends VirtualPet {
 
-	protected int hunger = 0;
-	protected int thirst = 0;
-	protected int waste = 1;
+	protected int hunger = ThreadLocalRandom.current().nextInt(20, 81);
+	protected int thirst = ThreadLocalRandom.current().nextInt(20, 81);
+	protected int waste = ThreadLocalRandom.current().nextInt(20, 81);
 
 	public Organic() {
 		super();
@@ -21,10 +23,20 @@ abstract public class Organic extends VirtualPet {
 
 	public void feed() {
 		hunger -= 20;
+		if (hunger < 0) {
+			hunger = 0;
+		}
+		waste += 20;
+		if (waste >= 100) {
+			waste = 100;
+		}
 	}
 
 	public void water() {
 		thirst -= 20;
+		if (thirst < 0) {
+			thirst = 0;
+		}
 	}
 
 	public int getWaste() {
@@ -35,36 +47,5 @@ abstract public class Organic extends VirtualPet {
 	abstract public void soil();
 
 	@Override
-	public void tick() {
-		hunger++;
-		thirst++;
-		boredom++;
-		waste++;
-		happiness--;
-		if (waste >= 100) {
-			soil();
-		}
-		if (hunger >= 100) {
-			hunger = 100;
-			health -= 20;
-		}
-		if (thirst >= 100) {
-			thirst = 100;
-			health -= 20;
-		}
-		if (boredom >= 100) {
-			boredom = 100;
-			happiness -= 20;
-		}
-		if (happiness <= 0) {
-			happiness = 0;
-			health -= 10;
-		}
-		if (health <= 0) {
-			health = 0;
-			isThisPetDead = true;
-		}
-
-	}
-
+	abstract public void tick();
 }
