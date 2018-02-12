@@ -25,7 +25,7 @@ public class ReportGenerator {
 			}
 		}
 		if (!organicDogPetStats.isEmpty()) {
-			combinedStats += "Organic Cats\t|Hunger\t|Thirst\t|Boredom|Happiness|Waste  |Health |Cage Cleanliness\n";
+			combinedStats += "Organic Dogs\t|Hunger\t|Thirst\t|Boredom|Happiness|Waste  |Health |Cage Cleanliness\n";
 			combinedStats += "----------------|-------|-------|-------|---------|-------|-------|----------------\n";
 			combinedStats += organicDogPetStats + "\n\n";
 		}
