@@ -2,7 +2,7 @@
 > Oh noes! Your virtual pet shelter has become a mess!
 
 ## Intro
-Our week four focus was on OOP principles.  We covered Polymorphism, Inheritance, and Encapsulation.  Our project aims to test our knowledge of these topics by expanding on the previous two weeks work and building a shelter that has four different style of virtual pets.  Organic pets are joined by robotic brethern, cats and dogs are now making a mess of the shelter.  Differences between cats and dogs are simple, you can walk dogs, cats use the litter box, and dogs stay in their cage.  All pets will have a health attribute that diminishes according to cleanliness of their living area, if their happiness drops too low, or if they have other needs that have not been met.
+Our week four focus was on OOP principles.  We covered Polymorphism, Inheritance, and Encapsulation.  Our project aims to test our knowledge of these topics by expanding on the previous two weeks work and building a shelter that has four different styles of virtual pets.  Organic pets are joined by robotic brethern, cats and dogs are now making a mess of the shelter.  Differences between cats and dogs are simple, you can walk dogs, cats use the litter box, and dogs stay in their cage.  All pets will have a health attribute that diminishes according to cleanliness of their living area, if their happiness drops too low, or if they have other needs that have not been met.
 >We’re introducing a health attribute for pets. Organic pets have their health decreased by unclean circumstances, and by thirst or hunger growing too high. Robotic pets only lose health if they’re not oiled regularly. All pets lose health if their happiness drops too low.
 
 ## Requirements
@@ -10,10 +10,10 @@ Here are the given requirements for this weeks project.
 ### Setup
 You can copy your code from the previous project to use as a starter, or start from scratch.
 
--[x] Create a Java project in Eclipse named virtual-pets-amok.
--[x] Create a README.md file in your project folder to describe what you’ve done with your project. No fancy formatting is necessary. Just separate paragraphs with an empty line. 
-	-[x](If you’d like to learn more about Markdown formatting, check out the Github Markdown Guide.)
--[x] Create a GitHub repository also named virtual-pets-amok and set it up so that you can push your code there from your Eclipse project. Do this now. It’s the least fun part, so just get it out of the way.
+- [x] Create a Java project in Eclipse named virtual-pets-amok.
+- [x] Create a README.md file in your project folder to describe what you’ve done with your project. No fancy formatting is necessary. Just separate paragraphs with an empty line. 
+	- [x](If you’d like to learn more about Markdown formatting, check out the Github Markdown Guide.)
+- [x] Create a GitHub repository also named virtual-pets-amok and set it up so that you can push your code there from your Eclipse project. Do this now. It’s the least fun part, so just get it out of the way.
 Required Tasks
 ### General
 - [x] introduce ways to track:
@@ -96,6 +96,7 @@ In addition to the last project’s requirements:
 
 ### Grading
 Here is the rubric.
+
 Category	| Max Score
 ------------|----------
 oilAllRobots()	|10
