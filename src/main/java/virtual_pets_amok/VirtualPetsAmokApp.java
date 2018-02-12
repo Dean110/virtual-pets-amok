@@ -28,8 +28,6 @@ public class VirtualPetsAmokApp {
 				+ "You decide to name him Bruce Wee, and it appears that he likes to bite and fight!");
 
 		myShelter.addPet(new OrganicDog("Bruce Wee", "he likes to bite and fight."));
-		myShelter.addPet(new OrganicDog("Bosco", "his fart is worse than his bite."));
-		myShelter.addPet(new RobotDog("K-9", "he is a doctor's best friend."));
 		System.out.println();
 
 		// Game Loop
@@ -46,21 +44,74 @@ public class VirtualPetsAmokApp {
 			}
 
 			System.out.println();
-			// System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom|Happiness|Health");
-			// System.out.println("----------------|-------|-------|-------|---------|-------");
-			// }
-			// petList = myShelter.pets();
-			// String organicPetStats = "";
-			//
-			// for (VirtualPet pet : petList) {
-			// if (pet instanceof Organic) {
-			// organicPetStats += report.petStats((Organic) pet) + "\n";
-			// }
-			// }
-			// if (!organicPetStats.isEmpty()) {
-			// System.out.println(organicPetStats);
 			System.out.println(report.combinedPetStats(myShelter));
 		}
+		System.out.println();
+		printMainUserMenu();
+		mainMenuChoice = input.nextLine();
+		switch (mainMenuChoice) {
+		case "1": {
+			myShelter.feedPets();
+			break;
+		}
+		case "2": {
+			myShelter.waterPets();
+			break;
+		}
+		case "3": {
+			System.out.println("Which dog would you like to play with?");
+			System.out.println(myShelter.displayNamesAndDescriptions());
+			dogChoice = input.nextLine();
+			myShelter.playWithPet(dogChoice);
+			break;
+		}
+		case "4": {
+			System.out.println("You found another circus dog in the alley behind the shelter.");
+			System.out.println("The dog looks at you and barks excitedly! What would you like to name this dog?");
+
+			String nameChoice = input.nextLine();
+
+			System.out.println(nameChoice + " barks in agreement to their new name.");
+			System.out.println("What kind of behavior does he show?");
+
+			String descriptionChoice = input.nextLine();
+
+			myShelter.admit(new VirtualPet(nameChoice, descriptionChoice));
+
+			System.out.println(nameChoice + " is a " + myShelter.findPet(nameChoice).getDnaTrait() + " dog.");
+			break;
+		}
+		case "5": {
+			System.out.println("A nice family shows up and wants a circus dog for their own!");
+			System.out.println("Which dog would you like to let them take home?");
+			System.out.println(myShelter.displayNamesAndDescriptions());
+			dogChoice = input.nextLine();
+			myShelter.adoptOut(dogChoice);
+
+			System.out.println(dogChoice
+					+ " barks at his new family, they look a little nervous in their car and they are on their way.");
+			break;
+		}
+		default: {
+			System.out.println("Huh?");
+		}
+		}
+
 	}
 
+	public static void printMainUserMenu() {
+		System.out.println();
+		System.out.println("What would you like to do next?");
+		System.out.println("-------------------------------");
+		System.out.println("1. Feed all pets.");
+		System.out.println("2. Water all pets.");
+		System.out.println("3. Walk all dogs.");
+		System.out.println("4. Play with a pet.");
+		System.out.println("5. Oil all robotic pets.");
+		System.out.println("6. Clean an organic dog's cage.");
+		System.out.println("7. Clean the shelter litter box.");
+		System.out.println("8. Bring a pet in off the streets.");
+		System.out.println("9. Send a pet to a new home.");
+		System.out.println();
+	}
 }

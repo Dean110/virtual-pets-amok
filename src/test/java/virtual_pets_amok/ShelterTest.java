@@ -134,7 +134,7 @@ public class ShelterTest {
 	@Test
 	public void shouldReturnTrueForIsThereADeadPet() {
 		underTest.addPet(testPet);
-		for (int i = 0; i < 51; i++) {
+		for (int i = 0; i < 151; i++) {
 			underTest.tick();
 		}
 		boolean result = underTest.isThereADeadPet();
@@ -153,5 +153,26 @@ public class ShelterTest {
 	public void shouldReturnFalseForIsThereADeadPetIfWeHaveNoPets() {
 		boolean result = underTest.isThereADeadPet();
 		assertThat(result, is(false));
+	}
+
+	@Test
+	public void cleanLitterBoxShouldResetLitterBoxCleanlinessTo100() {
+		underTest.cleanLitterBox();
+		int result = underTest.getLitterBoxCleanliness();
+		assertThat(result, is(100));
+	}
+
+	@Test
+	public void walkAllDogsWalksEachDogInTheShelter() {
+		underTest.addPet(testPet);
+		underTest.addPet(new OrganicCat("Cat", "T", underTest));
+		int preTestDogHappiness = testPet.getHappiness();
+		int preTestCatHappiness = underTest.getPet("Cat").getHappiness();
+		underTest.walkAllDogs();
+		int postTestDogHappiness = testPet.getHappiness();
+		int postTestCatHappiness = underTest.getPet("Cat").getHappiness();
+		assertThat(postTestDogHappiness - preTestDogHappiness, is(40));
+		assertThat(postTestCatHappiness - preTestCatHappiness, is(0));
+
 	}
 }

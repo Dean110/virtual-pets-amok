@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class Shelter {
 
-	private int litterBoxCleanliness;
+	private int litterBoxCleanliness = 100;
 	private HashMap<String, VirtualPet> pets = new HashMap<>();
 
 	public void addPet(VirtualPet pet) {
@@ -77,11 +77,23 @@ public class Shelter {
 	public boolean isThereADeadPet() {
 		boolean doWeHaveADeadPet = false;
 		for (Entry<String, VirtualPet> checkedPet : pets.entrySet()) {
-			String key = checkedPet.getKey();
-			if (pets.get(key).getIsThisPetDead()) {
+			if (checkedPet.getValue().getIsThisPetDead()) {
 				doWeHaveADeadPet = true;
 			}
 		}
 		return doWeHaveADeadPet;
+	}
+
+	public void cleanLitterBox() {
+		litterBoxCleanliness = 100;
+	}
+
+	public void walkAllDogs() {
+		for (Entry<String, VirtualPet> pet : pets.entrySet()) {
+			if (pet.getValue() instanceof Walkable) {
+				((Walkable) pet.getValue()).walk();
+			}
+		}
+
 	}
 }

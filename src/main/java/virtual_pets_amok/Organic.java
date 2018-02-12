@@ -2,8 +2,8 @@ package virtual_pets_amok;
 
 abstract public class Organic extends VirtualPet {
 
-	int hunger = 0;
-	int thirst = 0;
+	protected int hunger = 0;
+	protected int thirst = 0;
 	protected int waste = 0;
 
 	public Organic() {
