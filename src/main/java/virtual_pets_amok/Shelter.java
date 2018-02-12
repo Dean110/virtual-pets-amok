@@ -96,4 +96,17 @@ public class Shelter {
 		}
 
 	}
+
+	public void oilAllRobots() {
+		for (Entry<String, VirtualPet> pet : pets.entrySet()) {
+			if (pet.getValue() instanceof Robotic) {
+				((Robotic) pet.getValue()).oil();
+			}
+		}
+	}
+
+	public void cleanDogCage(String petName) {
+		((OrganicDog) pets.get(petName)).cleanCage();
+
+	}
 }

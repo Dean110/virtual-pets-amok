@@ -1,6 +1,5 @@
 package virtual_pets_amok;
 
-import java.util.Collection;
 import java.util.Scanner;
 
 public class VirtualPetsAmokApp {
@@ -10,7 +9,6 @@ public class VirtualPetsAmokApp {
 		Shelter myShelter = new Shelter();
 		ReportGenerator report = new ReportGenerator();
 		Scanner input = new Scanner(System.in);
-		Collection<VirtualPet> petList;
 		String mainMenuChoice;
 		String petChoice;
 
@@ -31,72 +29,117 @@ public class VirtualPetsAmokApp {
 		System.out.println();
 
 		// Game Loop
-		// while (myShelter) {
-		if (myShelter.getSize() < 1) {
-			System.out.println("We are out of pets! Go find some more before we lose our grant money.");
-			System.out.println();
+		while (!myShelter.isThereADeadPet()) {
+			if (myShelter.getSize() < 1) {
+				System.out.println("We are out of pets! Go find some more before we lose our grant money.");
+				System.out.println();
 
-		} else {
-			if (myShelter.getSize() == 1) {
-				System.out.println("This is how your pet is doing:");
 			} else {
-				System.out.println("This is how your pets are doing:");
+				if (myShelter.getSize() == 1) {
+					System.out.println("This is how your pet is doing:");
+				} else {
+					System.out.println("This is how your pets are doing:");
+				}
+
+				System.out.println();
+				System.out.println(report.combinedPetStats(myShelter));
 			}
-
 			System.out.println();
-			System.out.println(report.combinedPetStats(myShelter));
-		}
-		System.out.println();
-		printMainUserMenu();
-		mainMenuChoice = input.nextLine();
-		switch (mainMenuChoice) {
-		case "1": {
-			myShelter.feedPets();
-			break;
-		}
-		case "2": {
-			myShelter.waterPets();
-			break;
-		}
-		case "3": {
-			System.out.println("Which dog would you like to play with?");
-			System.out.println(myShelter.displayNamesAndDescriptions());
-			dogChoice = input.nextLine();
-			myShelter.playWithPet(dogChoice);
-			break;
-		}
-		case "4": {
-			System.out.println("You found another circus dog in the alley behind the shelter.");
-			System.out.println("The dog looks at you and barks excitedly! What would you like to name this dog?");
+			printMainUserMenu();
+			mainMenuChoice = input.nextLine();
+			switch (mainMenuChoice) {
+			case "1": {
+				myShelter.feedPets();
+				System.out.println("The shelter is quiet as the pets focus on eating.");
+				break;
+			}
+			case "2": {
+				myShelter.waterPets();
+				System.out.println("All your pets have water in their dishes.");
+				break;
+			}
+			case "3": {
+				myShelter.walkAllDogs();
+				System.out.println("All dogs made it back from the walk.");
+				break;
+			}
+			case "4": {
+				System.out.println("Which pet would you like to play with?");
+				System.out.println(report.displayNamesAndDescriptions(myShelter));
+				petChoice = input.nextLine();
+				myShelter.playWithPet(petChoice);
+				System.out.println(petChoice + " loves the attention!");
+				break;
+			}
+			case "5": {
+				myShelter.oilAllRobots();
+				System.out.println("All robots have been oiled.");
+				break;
+			}
+			case "6": {
+				System.out.println("Which dog's cage would you like to clean?");
+				System.out.println(report.displayOrganicDogsAndCageCleanliness(myShelter));
+				petChoice = input.nextLine();
+				myShelter.cleanDogCage(petChoice);
+				break;
+			}
+			case "7": {
+				myShelter.cleanLitterBox();
+				System.out.println("The litter box is empty, but the cats have formed a line to use it again.");
+				break;
+			}
+			case "8": {
+				System.out.println("You found another circus pet in the alley behind the shelter.");
+				System.out.println(
+						"It tries to get away, but you manage to corner it! What would you like to name this pet?");
+				String nameChoice = input.nextLine();
+				System.out.println("What kind of behavior do they show?");
+				String descriptionChoice = input.nextLine();
+				System.out.println("What kind of pet is it? 1)Organic Dog  2)Organic Cat  3)Robot Dog  4)Robot Cat?");
+				System.out.println("Use the number to select your answer:");
+				petChoice = input.nextLine();
+				switch (petChoice) {
+				case "1": {
+					myShelter.addPet(new OrganicDog(nameChoice, descriptionChoice));
+					break;
+				}
+				case "2": {
+					myShelter.addPet(new OrganicCat(nameChoice, descriptionChoice, myShelter));
+					break;
+				}
+				case "3": {
+					myShelter.addPet(new RobotDog(nameChoice, descriptionChoice));
+					break;
+				}
+				case "4": {
+					myShelter.addPet(new RoboticCat(nameChoice, descriptionChoice, myShelter));
+					break;
+				}
+				default: {
+					System.out.println("huh?");
+				}
+				}
+				break;
+			}
+			case "9": {
+				System.out.println("A nice family shows up and wants a circus pet for their own!");
+				System.out.println("Which pet would you like to let them take home?");
+				System.out.println(report.displayNamesAndDescriptions(myShelter));
+				petChoice = input.nextLine();
+				myShelter.adoptOut(petChoice);
 
-			String nameChoice = input.nextLine();
-
-			System.out.println(nameChoice + " barks in agreement to their new name.");
-			System.out.println("What kind of behavior does he show?");
-
-			String descriptionChoice = input.nextLine();
-
-			myShelter.admit(new VirtualPet(nameChoice, descriptionChoice));
-
-			System.out.println(nameChoice + " is a " + myShelter.findPet(nameChoice).getDnaTrait() + " dog.");
-			break;
-		}
-		case "5": {
-			System.out.println("A nice family shows up and wants a circus dog for their own!");
-			System.out.println("Which dog would you like to let them take home?");
-			System.out.println(myShelter.displayNamesAndDescriptions());
-			dogChoice = input.nextLine();
-			myShelter.adoptOut(dogChoice);
-
-			System.out.println(dogChoice
-					+ " barks at his new family, they look a little nervous in their car and they are on their way.");
-			break;
-		}
-		default: {
-			System.out.println("Huh?");
-		}
+				System.out.println(petChoice
+						+ " runs to their new family. They all look a little nervous in their car, but they are on their way.");
+				break;
+			}
+			default: {
+				System.out.println("Huh?");
+			}
+			}
+			myShelter.tick();
 		}
 
+		input.close();
 	}
 
 	public static void printMainUserMenu() {

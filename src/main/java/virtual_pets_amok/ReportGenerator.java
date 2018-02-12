@@ -3,17 +3,6 @@ package virtual_pets_amok;
 import java.util.Collection;
 
 public class ReportGenerator {
-	/*
-	 * System.out.println();
-	 * System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom|Happiness|Health");
-	 * System.out.println(
-	 * "----------------|-------|-------|-------|---------|-------"); } petList =
-	 * myShelter.pets(); String organicPetStats = "";
-	 * 
-	 * for (VirtualPet pet : petList) { if (pet instanceof Organic) {
-	 * organicPetStats += report.petStats((Organic) pet) + "\n"; } } if
-	 * (!organicPetStats.isEmpty()) { System.out.println(organicPetStats); }
-	 */
 
 	public String combinedPetStats(Shelter pets) {
 		String combinedStats = "";
@@ -72,6 +61,27 @@ public class ReportGenerator {
 			}
 		} else {
 			output = output.substring(0, 16);
+		}
+		return output;
+	}
+
+	public String displayNamesAndDescriptions(Shelter pets) {
+		String output = "";
+		Collection<VirtualPet> petList = pets.pets();
+		for (VirtualPet pet : petList) {
+			output += "[" + formatPetNameWithSpaces(pet) + "] " + pet.getDescription() + "\n";
+		}
+		return output;
+	}
+
+	public String displayOrganicDogsAndCageCleanliness(Shelter pets) {
+		String output = "";
+		Collection<VirtualPet> petList = pets.pets();
+		for (VirtualPet pet : petList) {
+			if (pet instanceof OrganicDog) {
+				output += "[" + formatPetNameWithSpaces(pet) + "]   Their cage is "
+						+ ((OrganicDog) pet).getCageCleanliness() + "% clean.\n";
+			}
 		}
 		return output;
 	}

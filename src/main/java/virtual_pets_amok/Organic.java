@@ -4,7 +4,7 @@ abstract public class Organic extends VirtualPet {
 
 	protected int hunger = 0;
 	protected int thirst = 0;
-	protected int waste = 0;
+	protected int waste = 1;
 
 	public Organic() {
 		super();

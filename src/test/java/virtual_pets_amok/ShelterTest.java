@@ -175,4 +175,29 @@ public class ShelterTest {
 		assertThat(postTestCatHappiness - preTestCatHappiness, is(0));
 
 	}
+
+	@Test
+	public void oilAllRobotsOilsAllRobots() {
+		underTest.addPet(new RoboticCat("Lion-O", "", underTest));
+		underTest.addPet(new RobotDog("K-9", ""));
+		int preTestCatHealth = underTest.getPet("Lion-O").getHealth();
+		int preTestDogHealth = underTest.getPet("K-9").getHealth();
+		underTest.oilAllRobots();
+		int postTestCatHealth = underTest.getPet("Lion-O").getHealth();
+		int postTestDogHealth = underTest.getPet("K-9").getHealth();
+		assertThat(postTestCatHealth > preTestCatHealth, is(true));
+		assertThat(postTestDogHealth > preTestDogHealth, is(true));
+
+	}
+
+	@Test
+	public void cleanDogCageShouldResetCageCleanlinessTo100() {
+		underTest.addPet(testPet);
+		((OrganicDog) testPet).soil();
+		// int preTest =((OrganicDog)testPet).getCageCleanliness();
+		underTest.cleanDogCage(PET_NAME);
+		int postTest = ((OrganicDog) testPet).getCageCleanliness();
+		assertThat(postTest, is(100));
+
+	}
 }

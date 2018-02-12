@@ -27,4 +27,9 @@ public class OrganicDog extends Organic implements Walkable {
 		return cageCleanliness;
 	}
 
+	public void cleanCage() {
+		cageCleanliness = 100;
+
+	}
+
 }
