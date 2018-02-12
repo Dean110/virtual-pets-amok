@@ -1,5 +1,6 @@
 package virtual_pets_amok;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 public class VirtualPetsAmokApp {
@@ -9,7 +10,7 @@ public class VirtualPetsAmokApp {
 		Shelter myShelter = new Shelter();
 		ReportGenerator report = new ReportGenerator();
 		Scanner input = new Scanner(System.in);
-
+		Collection<VirtualPet> petList;
 		String mainMenuChoice;
 		String petChoice;
 
@@ -27,6 +28,8 @@ public class VirtualPetsAmokApp {
 				+ "You decide to name him Bruce Wee, and it appears that he likes to bite and fight!");
 
 		myShelter.addPet(new OrganicDog("Bruce Wee", "he likes to bite and fight."));
+		myShelter.addPet(new OrganicDog("Bosco", "his fart is worse than his bite."));
+		myShelter.addPet(new RobotDog("K-9", "he is a doctor's best friend."));
 		System.out.println();
 
 		// Game Loop
@@ -41,8 +44,23 @@ public class VirtualPetsAmokApp {
 			} else {
 				System.out.println("This is how your pets are doing:");
 			}
-		}
 
+			System.out.println();
+			// System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom|Happiness|Health");
+			// System.out.println("----------------|-------|-------|-------|---------|-------");
+			// }
+			// petList = myShelter.pets();
+			// String organicPetStats = "";
+			//
+			// for (VirtualPet pet : petList) {
+			// if (pet instanceof Organic) {
+			// organicPetStats += report.petStats((Organic) pet) + "\n";
+			// }
+			// }
+			// if (!organicPetStats.isEmpty()) {
+			// System.out.println(organicPetStats);
+			System.out.println(report.combinedPetStats(myShelter));
+		}
 	}
 
 }
