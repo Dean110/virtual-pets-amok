@@ -1,8 +1,8 @@
 package virtual_pets_amok;
 
-public class RobotDog extends Robotic implements Walkable {
+public class RoboticDog extends Robotic implements Walkable {
 
-	public RobotDog(String name, String description) {
+	public RoboticDog(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}

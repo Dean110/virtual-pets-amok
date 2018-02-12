@@ -8,7 +8,7 @@ import org.junit.Test;
 public class RoboticDogTest {
 	private static final String DEFAULT_DESCRIPTION = "A doctor's best friend.";
 	private static final String DEFAULT_NAME = "K-9";
-	RobotDog underTest = new RobotDog(DEFAULT_NAME, DEFAULT_DESCRIPTION);
+	RoboticDog underTest = new RoboticDog(DEFAULT_NAME, DEFAULT_DESCRIPTION);
 
 	@Test
 	public void roboDogShouldHaveANameAndDescription() {

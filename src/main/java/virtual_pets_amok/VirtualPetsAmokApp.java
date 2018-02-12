@@ -108,7 +108,7 @@ public class VirtualPetsAmokApp {
 					break;
 				}
 				case "3": {
-					myShelter.addPet(new RobotDog(nameChoice, descriptionChoice));
+					myShelter.addPet(new RoboticDog(nameChoice, descriptionChoice));
 					break;
 				}
 				case "4": {

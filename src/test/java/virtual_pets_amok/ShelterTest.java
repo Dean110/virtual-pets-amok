@@ -179,7 +179,7 @@ public class ShelterTest {
 	@Test
 	public void oilAllRobotsOilsAllRobots() {
 		underTest.addPet(new RoboticCat("Lion-O", "", underTest));
-		underTest.addPet(new RobotDog("K-9", ""));
+		underTest.addPet(new RoboticDog("K-9", ""));
 		int preTestCatHealth = underTest.getPet("Lion-O").getHealth();
 		int preTestDogHealth = underTest.getPet("K-9").getHealth();
 		underTest.oilAllRobots();
